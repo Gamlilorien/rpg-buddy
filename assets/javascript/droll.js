@@ -134,12 +134,12 @@ function roll(die) {
 
   //set values as string so it can be pushed to Firebase
   newLog = summary +"|" +CurrentDate;
-  console.log(newLog);
+  //console.log(newLog);
 
   //push to local variable and then SET to database to override existing database value
   log_history.push(newLog);
 
-  console.log(log_history);
+  //console.log(log_history);
   //Disabled this because it keeps making a new instance in Firebase rather than pushing to the existing instance
   // database.ref().push({
   //   log: newLog,
@@ -151,11 +151,11 @@ function roll(die) {
   //   log: log_history
   // });
 
+  //replace firebase data with current values
+  setFirebase();
+
   //now append to current page
   showRowResults(summary, CurrentDate);
-
-  //pushFirebase();
-  //log_history.push(summary +"|" +CurrentDate);
 };
 
 
@@ -198,7 +198,3 @@ $("#quickRoll").on("click", function(event) {
 });
 // Adding click event listeners to all elements with a class of "rollDie"
 $(document).on("click", ".rollDie", rollButton);
-
-// database.ref().on("child_added", function(childSnapshot) {
-//   console.log(childSnapshot);
-// });

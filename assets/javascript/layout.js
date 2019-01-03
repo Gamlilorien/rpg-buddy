@@ -13,7 +13,6 @@
 
 // ********** VARIABLES
     var database = firebase.database();
-    // console.log(database);
 
     var systems = ["Rifts", "Transformers", "Conan", "DC", "Battlestations"];
 
@@ -43,46 +42,11 @@ function setFirebase() {
 };
 
 function pushFirebase() {
-    database.ref().push({
+    dbvalue.ref().push({
         log: newLog
       });
 };
-// connectionsRef references a specific location in our database.
-// All of our connections will be stored in this directory.
-var connectionsRef = database.ref("/connections");
 
-// '.info/connected' is a special location provided by Firebase that is updated
-// every time the client's connection state changes.
-// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
-var connectedRef = database.ref(".info/connected");
-
-// When the client's connection state changes...
-connectedRef.on("value", function(snap) {
-
-    //Now that these items are in firebase, we don't need to re-assign them
-    // database.ref().set({
-    //     buttons: buttons,
-    //     systems: systems,
-    //     log: log_history
-    //   });
-
-  // If they are connected..
-  if (snap.val()) {
-
-    // Add user to the connections list.
-    var con = connectionsRef.push(true);
-    // Remove user from the connection list when they disconnect.
-    con.onDisconnect().remove();
-  }
-});
-
-// When first loaded or when the connections list changes...
-connectionsRef.on("value", function(snap) {
-
-  // Display the viewer count in the html.
-  // The number of online users is the number of children in the connections list.
-  $("#connected-viewers").text(snap.numChildren());
-});
 
 // Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
 //database.ref().on("child_added", function(childSnapshot) {
@@ -108,10 +72,10 @@ connectionsRef.on("value", function(snap) {
     database.ref().on("value", function(snapshot) {
 
          // Then we console.log the value of snapshot
-         var value = snapshot.val();
-         //console.log(value);
+         var dbvalue = snapshot.val();
+         console.log(dbvalue);
   
-         log_history = value.log;
+         log_history = dbvalue.log;
          //console.log(log_history);
          //now display results in the HTML
          displayLogRecords();
