@@ -131,39 +131,31 @@ function roll(die) {
   }
   var CurrentDate = moment().format("l, LTS");
 
-  //console.log(summary);
-  //moved all this to the layout.js file
-  // var content = $("<p>").addClass("log-result").html(summary).append(
-  //   $("<p>").addClass("log-timestamp").html(CurrentDate)
-  // );
-
-  // var log = $("<div>").addClass("log-container").html(
-  //   content
-  // );
 
   //set values as string so it can be pushed to Firebase
   newLog = summary +"|" +CurrentDate;
+  console.log(newLog);
 
   //push to local variable and then SET to database to override existing database value
   log_history.push(newLog);
 
+  console.log(log_history);
   //Disabled this because it keeps making a new instance in Firebase rather than pushing to the existing instance
-  database.ref().push({
-    log: newLog,
-    dateAdded: firebase.database.ServerValue.TIMESTAMP
-  });
+  // database.ref().push({
+  //   log: newLog,
+  //   dateAdded: firebase.database.ServerValue.TIMESTAMP
+  // });
 
   //set erases ALL instances and starts over...
   // database.ref().set({
   //   log: log_history
   // });
-  
+
+  //now append to current page
+  showRowResults(summary, CurrentDate);
+
   //pushFirebase();
   //log_history.push(summary +"|" +CurrentDate);
-  //prepend result to page
-  //$("#tabletop-view").prepend(log);
-  //now update firebase with new values
-
 };
 
 
@@ -177,6 +169,18 @@ function rollInput() {
   roll(die);
   //now clear input
   $("#qRoll-input").val("");
+};
+
+function showRowResults(result, date) {
+    var content = $("<p>").addClass("log-result").html(result).append(
+      $("<p>").addClass("log-timestamp").html(date)
+    );
+  
+    var log = $("<div>").addClass("log-container").html(
+      content
+    );
+    //prepend result to page so most recent entries (ie ones with the higer index) appear on top
+    $("#tabletop-view").prepend(log);
 };
 
 //Sample result for testing

@@ -182,7 +182,7 @@ connectionsRef.on("value", function(snap) {
             //prepend result to page so most recent entries (ie ones with the higer index) appear on top
             $("#tabletop-view").prepend(log);
         }
-    };
+    }; 
 
 //Call the createButtons function automatically (ie when page loads)
     createButtons();
