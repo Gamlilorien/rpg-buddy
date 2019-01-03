@@ -129,20 +129,41 @@ function roll(die) {
   } else {
     var summary = "Rolled a " +total +" (" +die +": " +diceRolls +"=" +total +")";
   }
-  
-  //console.log(result);
-  //console.log(summary);
-
   var CurrentDate = moment().format("l, LTS");
-  var content = $("<p>").addClass("log-result").html(summary).append(
-    $("<p>").addClass("log-timestamp").html(CurrentDate)
-  );
 
-  var log = $("<div>").addClass("log-container").html(
-    content
-  );
+  //console.log(summary);
+  //moved all this to the layout.js file
+  // var content = $("<p>").addClass("log-result").html(summary).append(
+  //   $("<p>").addClass("log-timestamp").html(CurrentDate)
+  // );
+
+  // var log = $("<div>").addClass("log-container").html(
+  //   content
+  // );
+
+  //set values as string so it can be pushed to Firebase
+  newLog = summary +"|" +CurrentDate;
+
+  //push to local variable and then SET to database to override existing database value
+  log_history.push(newLog);
+
+  //Disabled this because it keeps making a new instance in Firebase rather than pushing to the existing instance
+  database.ref().push({
+    log: newLog,
+    dateAdded: firebase.database.ServerValue.TIMESTAMP
+  });
+
+  //set erases ALL instances and starts over...
+  // database.ref().set({
+  //   log: log_history
+  // });
+  
+  //pushFirebase();
+  //log_history.push(summary +"|" +CurrentDate);
   //prepend result to page
-  $("#tabletop-view").prepend(log);
+  //$("#tabletop-view").prepend(log);
+  //now update firebase with new values
+
 };
 
 
@@ -168,8 +189,12 @@ function rollInput() {
 $("#quickRoll").on("click", function(event) {
         
   event.preventDefault(); // this prevents the html form from relaoding the page on submit
-  //now add this new value to the 'topics' array, and then update the buttons
+  //now add this new value to the 'buttons' array, and then update the buttons
   rollInput();
 });
 // Adding click event listeners to all elements with a class of "rollDie"
 $(document).on("click", ".rollDie", rollButton);
+
+// database.ref().on("child_added", function(childSnapshot) {
+//   console.log(childSnapshot);
+// });
