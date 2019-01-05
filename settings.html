@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
 
-    <title>RPG Buddy</title>
+    <title>RPG Buddy Settings</title>
 </head>
 <body>
 
@@ -24,8 +24,8 @@
         </button> -->
         <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> -->
             <div class="navbar-nav nav-right ml-auto mr-5">
-            <a class="nav-item nav-link active" href="#"><i class="fas fa-dice-d20"></i> <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="settings.html"><i class="fas fa-cog"></i></a>
+            <a class="nav-item nav-link" href="index.html"><i class="fas fa-dice-d20"></i> <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="#"><i class="fas fa-cog"></i></a>
             <a class="nav-item nav-link" href="#"><i class="far fa-envelope"></i></a>
             </div>
         <!-- </div> -->
@@ -36,29 +36,28 @@
 
         <div class="jumbotron">
             <!-- Heading -->
-            <h3>Dice</h3>
+            <h3>Settings</h3>
 
             <hr class="my-4">
-            <!-- Buttons goes here -->
-                <div id="button-view">
-                    <!-- Buttons will be inserted automatically by js  -->
-                </div>
-    
+            <!-- Display the current array of values but have each value act as a text button to remove from array -->
+            <h5>Current Buttons: <span id="dieButton-array"></span></h5>
             <!-- Input form goes here -->
-            <form id="quickRoll-form">
-                <input type="text" id="qRoll-input">
-                <input id="quickRoll" type="submit" value="Quick Roll!">
+            <form id="newDie-form">
+                <input type="text" id="die-input">
+                <input id="add-die" type="submit" value="+ Add Button">
             </form>
+
             <hr class="my-4">
-            <button class="btn btn-primary" id="trimLogs">Trim Log Results</button>
+            <h5>Current Name: <span id="cName"></span></h5>
+            <form id="getName-form">
+                <input type="text" id="name-input">
+                <input id="add-name" type="submit" value="Set Name">
+            </form>
             <!-- <a href="assets/images/drive-by_laugh.gif" download><i class="fas fa-save fa-2x"></i></a> -->
         </div>
 
 
-    <!-- Tabletop results goes here -->
-        <div id="tabletop-view">
-
-        </div>
+    
     
     <!--END main container div -->
     </div>

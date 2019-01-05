@@ -31,13 +31,18 @@
     ];
 
     var log_history = [];
-    var cName;
+    var cName = "Anonymous";
+    //set initial settings on page load
+    $("#cName").text(cName);
 
     function getUserName() {
-        cName = prompt("Please enter your Character's name:");
-        while(cName === null) {
-            cName = prompt("Please enter your Character's name:");
-        }
+        //get value from form
+        cName = $("#name-input").val().trim();
+        console.log(cName);
+        //update settings to reflect change
+        $("#cName").text(cName);
+        //don't forget to empty the form textbox after submiting
+        $("#name-input").val("");
     };
     
 
@@ -152,6 +157,14 @@ function pushFirebase() {
         createButtons();
     });
 
+    //Add click event for the Set Name button on the settings page
+    $("#add-name").on("click", function(event) {
+        
+        event.preventDefault(); // this prevents the html form from relaoding the page on submit
+        //now add this new value to the 'buttons' array, and then update the buttons
+        getUserName();
+    });
+
     //Generates the log records in the html FROM the Firebase results so it updtes dynamically
     function displayLogRecords() {
         var len = log_history.length;
@@ -181,6 +194,6 @@ function pushFirebase() {
     $(document).on("click", "#trimLogs", trimLogs);
 
     createButtons();
-    getUserName();
+    //getUserName();
 
     

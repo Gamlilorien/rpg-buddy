@@ -2,7 +2,7 @@ body {
     background-color: black;
 }
 
-h1, h2, h3, h4, p, label, i {
+h1, h2, h3, h4, h5, p, label, i {
     color: white;
 }
 
@@ -59,4 +59,8 @@ i {
 
 .navbar-brand {
     margin-top: 1rem;
+}
+
+form, input {
+    margin-left: 0;
 }
