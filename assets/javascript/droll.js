@@ -125,9 +125,9 @@ function roll(die) {
   var diceRolls = result.rolls.join("+");
   var modifier = result.modifier;
   if (modifier > 0) {
-    var summary = "Rolled a " +total +" (" +die +": " +diceRolls +"+" +modifier +"=" +total +")";
+    var summary = cName +" Rolled a " +total +" (" +die +": " +diceRolls +"+" +modifier +"=" +total +")";
   } else {
-    var summary = "Rolled a " +total +" (" +die +": " +diceRolls +"=" +total +")";
+    var summary = cName +" Rolled a " +total +" (" +die +": " +diceRolls +"=" +total +")";
   }
   var CurrentDate = moment().format("l, LTS");
 
@@ -155,7 +155,9 @@ function roll(die) {
   setFirebase();
 
   //now append to current page
-  showRowResults(summary, CurrentDate);
+  //added this step BELOW the setFirebase function otherwise it wouldn't trigger
+  //However this step results in duplicate values...
+  //showRowResults(summary, CurrentDate);
 };
 
 

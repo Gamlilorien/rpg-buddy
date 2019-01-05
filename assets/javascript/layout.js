@@ -31,6 +31,15 @@
     ];
 
     var log_history = [];
+    var cName;
+
+    function getUserName() {
+        cName = prompt("Please enter your Character's name:");
+        while(cName === null) {
+            cName = prompt("Please enter your Character's name:");
+        }
+    };
+    
 
 //************** FIREBASE MANIPULATION *********
 function setFirebase() {
@@ -72,12 +81,14 @@ function pushFirebase() {
     database.ref().on("value", function(snapshot) {
 
          // Then we console.log the value of snapshot
-         var dbvalue = snapshot.val();
+         dbvalue = snapshot.val();
          console.log(dbvalue);
   
          log_history = dbvalue.log;
          //console.log(log_history);
-         //now display results in the HTML
+         //first we need to clear existing log values in the HTML or we will see duplicates
+         $("#tabletop-view").empty();
+        //now display the latest Firebase results in the HTML
          displayLogRecords();
        });
 
@@ -99,21 +110,34 @@ function pushFirebase() {
 
     function addNewButton () {
         //get the input VALUE as a variable. TRIM any excess spaces or characters
-        var newSuperhero = $("#die-input").val().trim();
+        var dieButton = $("#die-input").val().trim();
         //don't forget to empty the form textbox after submiting
         $("#die-input").val("");
         //PUSH this new value to the 'buttons' array
-        buttons.push(newSuperhero);
+        buttons.push(dieButton);
     };
 
 
-
-    function clearLogList() {
-        $("#tabletop-view").empty();
-        $("#resultCount").empty();
-        //need to clear variable too
-        countResults = 0;
-
+    //this function is triggered by clicking on the 'Trim Log Results' button
+    //it will remove all but the 3 most recent items from the log_history array
+    //replace with the existing firebase value for 'log'
+    //and then the database.ref().on("value"... will do the rest
+    function trimLogs() {
+        //grab the last 3 items from the log_history array
+        //if the array length is 6, I would want indexes [3, 4, 5]
+        var len = log_history.length;
+        //if len > 3 then do len -3, -2, -1
+        if (len > 3) {
+            var a1 = log_history[len -3];
+            var a2 = log_history[len -2];
+            var a3 = log_history[len -1];
+            var newLog = [a1, a2, a3];
+            console.log(newLog);
+            //now update the log_history value with this value and push it to Firebase
+            log_history = newLog;
+            setFirebase();
+        }
+        //else nothing
     };
 
     
@@ -130,12 +154,13 @@ function pushFirebase() {
 
     //Generates the log records in the html FROM the Firebase results so it updtes dynamically
     function displayLogRecords() {
-        var len = log_history.length -1;
+        var len = log_history.length;
         for (i = 0; i < len; i++) {
             var values = log_history[i].split("|");
             var CurrentDate = values[1];
             var summary = values[0];
             //console.log(summary);
+            //console.log(CurrentDate);
             var content = $("<p>").addClass("log-result").html(summary).append(
               $("<p>").addClass("log-timestamp").html(CurrentDate)
             );
@@ -149,8 +174,11 @@ function pushFirebase() {
     }; 
 
 //Call the createButtons function automatically (ie when page loads)
-    createButtons();
+   
     
    
     //option for users to clear giff results on their own.
-    $(document).on("click", "#clearLogList", clearLogList);
+    $(document).on("click", "#trimLogs", trimLogs);
+
+    createButtons();
+    getUserName();
