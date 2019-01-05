@@ -51,3 +51,12 @@ hr {
 i {
     margin: 5px 0 0 10px;
 }
+
+.nav-link {
+    width: 80px;
+    font-size: 2rem;
+}
+
+.navbar-brand {
+    margin-top: 1rem;
+}

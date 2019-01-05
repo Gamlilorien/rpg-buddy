@@ -11,15 +11,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
 
-    <title>Tabletop Buddy</title>
+    <title>RPG Buddy</title>
 </head>
 <body>
+
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand navbar-light bg-dark">
+        <span class="navbar-brand text-white text-center my-Bg pt-3 pb-3 pl-3 pr-3">RPG Buddy</span>
+        <!-- Removed this because we DON'T want nav icons to disapear on small screens -->
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> -->
+            <div class="navbar-nav nav-right ml-auto mr-5">
+            <a class="nav-item nav-link active" href="#"><i class="fas fa-dice-d20"></i> <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#"><i class="fas fa-cog"></i></a>
+            <a class="nav-item nav-link" href="#"><i class="far fa-envelope"></i></a>
+            </div>
+        <!-- </div> -->
+    </nav>
+
 
     <div class="container">
 
         <div class="jumbotron">
-            <h1 class="display-4 main-title">Tabletop Buddy <span id="connected-viewers"></span> Player(s)</h1>
-            <hr class="my-4">
             <!-- Buttons goes here -->
                 <div id="button-view">
                     <!-- Buttons will be inserted automatically by js  -->
