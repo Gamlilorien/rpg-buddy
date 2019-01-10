@@ -47,7 +47,40 @@
 
     //set value of dice array to settings popover when ever it changes.
     function showDiceArray() {
-        $("#dieButton-array").text(buttons);
+        //ideally this function should create a button for each array item for easy removal
+        var dArray = buttons;
+
+        //empty existing value (if any)
+        $("#dieButton-array").empty();
+        
+        for (i=0; i < dArray.length; i++) {
+            var die = dArray[i];
+            //var func = "deleteButton(" +die +")"
+            var a = $("<a>").attr({href: "#", class: "deleteButton", value: die}).html(die + ", ")
+            
+            //now add each button text link to the settings popover
+            $("#dieButton-array").append(a);
+        }
+
+        //NOW update the actual buttons to reflect changes
+        //createButtons();
+    }
+
+    //define function to delete an existing button using the die value
+    function deleteButton(dValue) {
+        var array = buttons;
+        //var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+        for( var i = 0; i < array.length-1; i++){ 
+            if ( array[i] === dValue) {
+                array.splice(i, 1); 
+            }
+        }
+        //now updat buttons variable with new result
+        buttons = array;
+        //now update diceButtons shown
+        showDiceArray();
+        createButtons();
     }
     
 
@@ -116,9 +149,6 @@ function pushFirebase() {
             newButton = newButton.addClass("rollDie btn btn-primary").text(buttons[i]);
             $("#button-view").append(newButton);
         }
-
-        //added this function here so it also updates the printed list in the settings popover
-        showDiceArray();
     };
 
     function addNewButton () {
@@ -163,6 +193,7 @@ function pushFirebase() {
         addNewButton();
 
         createButtons();
+        showDiceArray();
     });
 
     //Add click event for the Set Name button on the settings page
@@ -201,8 +232,17 @@ function pushFirebase() {
     //option for users to clear giff results on their own.
     $(document).on("click", "#trimLogs", trimLogs);
 
+    $(document).on("click", ".deleteButton", function() {
+        var dValue = $(this).attr("value");
+        //console.log("die value clicked: " +dValue);
+
+        //now call the deleteButton() function and pass the desired dValue to remove
+        deleteButton(dValue);
+    });
+
 
     createButtons();
+    showDiceArray();
     //getUserName();
 
     
