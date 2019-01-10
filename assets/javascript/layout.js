@@ -44,6 +44,11 @@
         //don't forget to empty the form textbox after submiting
         $("#name-input").val("");
     };
+
+    //set value of dice array to settings popover when ever it changes.
+    function showDiceArray() {
+        $("#dieButton-array").text(buttons);
+    }
     
 
 //************** FIREBASE MANIPULATION *********
@@ -111,6 +116,9 @@ function pushFirebase() {
             newButton = newButton.addClass("rollDie btn btn-primary").text(buttons[i]);
             $("#button-view").append(newButton);
         }
+
+        //added this function here so it also updates the printed list in the settings popover
+        showDiceArray();
     };
 
     function addNewButton () {
@@ -192,6 +200,7 @@ function pushFirebase() {
    
     //option for users to clear giff results on their own.
     $(document).on("click", "#trimLogs", trimLogs);
+
 
     createButtons();
     //getUserName();

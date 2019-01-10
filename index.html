@@ -25,11 +25,47 @@
         <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> -->
             <div class="navbar-nav nav-right ml-auto mr-5">
             <a class="nav-item nav-link active" href="#"><i class="fas fa-dice-d20"></i> <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="settings.html"><i class="fas fa-cog"></i></a>
+            <a class="nav-item nav-link" data-toggle="modal" data-target="#settingsModal"><i class="fas fa-cog"></i></a>
             <a class="nav-item nav-link" href="#"><i class="far fa-envelope"></i></a>
             </div>
         <!-- </div> -->
     </nav>
+
+    <div class="container">
+        
+        <!-- Modal -->
+        <div class="modal fade" id="settingsModal" role="dialog">
+          <div class="modal-dialog modal-dialog-centered">
+          
+            <!-- Modal content-->
+            <div class="modal-content bg-dark">
+              <div class="modal-header">
+                <h4 class="modal-title">Settings</h4>
+              </div>
+              <div class="modal-body">
+                    <h5>Current Buttons: <span id="dieButton-array"></span></h5>
+                    <!-- Input form goes here -->
+                    <form id="newDie-form">
+                        <input type="text" id="die-input">
+                        <input id="add-die" type="submit" value="+ Add Button">
+                    </form>
+
+                    <hr class="my-4">
+                    <h5>Current Name: <span id="cName"></span></h5>
+                    <form id="getName-form">
+                        <input type="text" id="name-input">
+                        <input id="add-name" type="submit" value="Set Name">
+                    </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
 
 
     <div class="container">
@@ -63,6 +99,7 @@
     <!--END main container div -->
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/javascript/droll.js"></script>
     <script type="text/javascript" src="assets/javascript/layout.js"></script>
 </body>
