@@ -65,6 +65,10 @@ form, input {
     margin-left: 0;
 }
 
+.nav-button {
+    background: none;
+    border: none;
+}
 
 
 
