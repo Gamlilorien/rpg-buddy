@@ -17,34 +17,69 @@
 
     <!-- Nav bar -->
     <nav class="navbar sticky-top navbar-expand navbar-light bg-dark">
-        <span class="navbar-brand text-white text-center my-Bg pt-3 pb-3 pl-3 pr-3">RPG Buddy</span>
+        <span class="navbar-brand text-white text-center my-Bg pt-3 pb-3 pl-3 pr-3"><i class="fas fa-dice-d20"></i> RPG Buddy</span>
         <!-- Removed this because we DON'T want nav icons to disapear on small screens -->
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button> -->
         <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> -->
             <div class="navbar-nav nav-right ml-auto mr-5">
-            <a class="nav-item nav-link active" href="#"><i class="fas fa-dice-d20"></i> <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" data-toggle="modal" data-target="#settingsModal"><i class="fas fa-cog"></i></a>
-            <a class="nav-item nav-link" href="#"><i class="far fa-envelope"></i></a>
+            <a class="nav-item nav-link" data-toggle="modal" data-target="#shareModal"><i class="fas fa-share-square"></i></a>
             </div>
         <!-- </div> -->
     </nav>
 
+    <!-- Settings Modal -->
     <div class="container">
-        
-        <!-- Modal -->
         <div class="modal fade" id="settingsModal" role="dialog">
           <div class="modal-dialog modal-dialog-centered">
           
             <!-- Modal content-->
             <div class="modal-content bg-dark">
               <div class="modal-header">
-                <h4 class="modal-title">Settings</h4>
+                <h4 class="modal-title"><i class="fas fa-cog"></i> Settings</h4>
               </div>
               <div class="modal-body">
-                    <h5>Current Buttons: <span id=""></span></h5>
+                    <h5>Current Buttons:</h5>
                     <div id="dieButton-array"></div>
+                    <!-- Input form goes here -->
+                    <form id="newDie-form">
+                        <input type="text" id="die-input">
+                        <input id="add-die" type="submit" value="+ Add Button">
+                    </form>
+                    <p>(Click on an existing value to delete or use the input field to add a new button. Example inputs: 2d6, 4d4+2, etc)</p>
+
+                    <hr class="my-4">
+                    <h5>Current Name: <span id="cName"></span></h5>
+                    <form id="getName-form">
+                        <input type="text" id="name-input">
+                        <input id="add-name" type="submit" value="Set Name">
+                    </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+
+
+    <!-- Settings Modal -->
+      <div class="container">
+        <div class="modal fade" id="shareModal" role="dialog">
+          <div class="modal-dialog modal-dialog-centered">
+          
+            <!-- Modal content-->
+            <div class="modal-content bg-dark">
+              <div class="modal-header">
+                <h4 class="modal-title"><i class="fas fa-share-square"></i> Share</h4>
+              </div>
+              <div class="modal-body">
+                    <h5>Invite by SMS:</h5>
                     <!-- Input form goes here -->
                     <form id="newDie-form">
                         <input type="text" id="die-input">
@@ -52,10 +87,11 @@
                     </form>
 
                     <hr class="my-4">
-                    <h5>Current Name: <span id="cName"></span></h5>
-                    <form id="getName-form">
-                        <input type="text" id="name-input">
-                        <input id="add-name" type="submit" value="Set Name">
+                    <h5>Invite via Email: <span id="cName"></span></h5>
+                    <form id="emailLink-form">
+                        <input type="text" id="email-input">
+                        <!-- <input id="add-email" type="submit" class="far fa-envelope" value="email"> -->
+                        <button type="submit"><i class="far fa-envelope"></i> Email</button>
                     </form>
               </div>
               <div class="modal-footer">
