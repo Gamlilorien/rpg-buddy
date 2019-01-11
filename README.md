@@ -43,6 +43,8 @@ In addition to the use of good 'ol JavaScript, HTML, and CSS, RPG Buddy was buil
 
    * [jQuery](https://jquery.com/) - for less verbose JavaScript
 
+   * [Moment.js](https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js) - for adding a human-ledgible timestamp to the Roll History
+
    * [FontAwesome](https://fontawesome.com/) - for fantastic free icons
 
    * [Bootstrap-modal-ios](https://gist.github.com/thuijssoon) - for best UI experience I wanted to use modal windows on a mobile browser which has known issues in Bootstrap. Thankfully this bit of code by Thijs Huijssoon was just what I needed and was easy to impliment and modify, so thank you!
