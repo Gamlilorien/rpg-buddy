@@ -16,7 +16,7 @@
 <body>
 
     <!-- Nav bar -->
-    <nav class="navbar sticky-top navbar-expand navbar-light bg-dark">
+    <nav class="navbar sticky-top navbar-expand navbar-light bg-dark nav-my-background">
         <span class="navbar-brand text-white text-center my-Bg pt-3 pb-3 pl-3 pr-3"><i class="fas fa-dice-d20"></i> RPG Buddy</span>
         <!-- Removed this because we DON'T want nav icons to disapear on small screens -->
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,9 +24,7 @@
         </button> -->
         <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> -->
             <div class="navbar-nav nav-right ml-auto mr-5">
-            <button type="button" class="nav-item nav-link nav-button" data-toggle="modal" data-target="#settingsModal">
-                <i class="fas fa-cog"></i>
-            </button>
+            
             <button type="button" class="nav-item nav-link nav-button" data-toggle="modal" data-target="#shareModal">
                     <i class="fas fa-share-square"></i>
             </button>
@@ -44,7 +42,7 @@
                 <h4 class="modal-title"><i class="fas fa-cog"></i> Settings</h4>
               </div>
               <div class="modal-body">
-                    <h5>Current Buttons:</h5>
+                    <h5>Current Dice Buttons:</h5>
                     <div id="dieButton-array"></div>
                     <p class="instructions">(Tap to remove)</p>
                     <!-- Input form goes here -->
@@ -71,7 +69,7 @@
         
 
 
-    <!-- Settings Modal -->
+    <!-- Share Modal -->
       <div class="container">
         <div class="modal fade" id="shareModal" role="dialog">
           <div class="modal-dialog modal-dialog-centered">
@@ -84,9 +82,9 @@
               <div class="modal-body">
                     <h5>Invite by SMS:</h5>
                     <!-- Input form goes here -->
-                    <form id="newDie-form">
-                        <input type="text" id="die-input">
-                        <input id="add-die" type="submit" value="+ Add Button">
+                    <form id="smsLink-form">
+                        <input type="text" id="sms-input">
+                        <button type="submit"><i class="fas fa-comment"></i> SMS/Text</button>
                     </form>
 
                     <br>
@@ -112,9 +110,19 @@
 
         <div class="jumbotron">
             <!-- Heading -->
-            <h3>Dice</h3>
+            <div class="container">
+                <div class="row jumbotron-title-row">
+                <div class="col no-padd">
+                        <h3>Dice</h3>
+                </div>
+                <div class="col-2 no-padd align-rt">
+                        <button type="button" class="nav-button jumbotron-title-icon" data-toggle="modal" data-target="#settingsModal">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                </div>
+                </div>
+            </div>
 
-            <hr class="my-4">
             <!-- Buttons goes here -->
                 <div id="button-view">
                     <!-- Buttons will be inserted automatically by js  -->
@@ -123,7 +131,7 @@
             <!-- Input form goes here -->
             <form id="quickRoll-form">
                 <input type="text" id="qRoll-input">
-                <input id="quickRoll" type="submit" value="Quick Roll!">
+                <input id="quickRoll" class="btn-default" type="submit" value="Quick Roll!">
             </form>
             
         </div>

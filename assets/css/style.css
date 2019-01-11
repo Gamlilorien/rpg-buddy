@@ -33,8 +33,29 @@ p {
 
 .jumbotron {
     background-color: #2c4b5d;
+    background-image: url("../images/u_carb02.jpg");
     padding: 1rem;
     margin-bottom: 1rem;
+}
+
+.align-rt {
+    text-align: right;
+}
+
+.jumbotron-title-icon {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.jumbotron-title-row {
+    padding: 0;
+    margin: 0;
+}
+
+.no-padd {
+    padding: 0;
+    margin: 0;
 }
 
 .log-container {
@@ -43,7 +64,7 @@ p {
 }
 
 .log-result, .log-timestamp {
-    color: gray;
+    color: #b7b6b6;
 }
 
 .log-timestamp {
@@ -77,6 +98,14 @@ form, input, #dieButton-array {
 .nav-button {
     background: none;
     border: none;
+}
+
+.nav-my-background {
+    background-image: url("../images/u_carb06.jpg");
+}
+
+a.deleteButton {
+    color: #c74949;
 }
 
 
@@ -122,7 +151,8 @@ form, input, #dieButton-array {
 .modal-content {
 	
 	max-width: 500px;
-	margin: 0 auto;
+    margin: 0 auto;
+    background-image: url("../images/u_metalgreen.jpg");
 
 }
 
