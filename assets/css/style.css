@@ -27,7 +27,9 @@ p {
 
 .jumbotron {
     background-color: #2c4b5d;
-    padding: 2rem;
+    padding: 1rem;
+    padding-bottom: .2rem;
+    margin-bottom: 1rem;
 }
 
 .log-container {
