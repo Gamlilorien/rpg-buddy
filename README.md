@@ -2,6 +2,8 @@
 ## A free real-time helper app for players of Tabletop Role Playing Games
 ![rpg-buddy](assets/images/rpg-buddy.png)
 
+[View Live Demo](https://gamlilorien.github.io/rpg-buddy/)
+
 ### Purpose
 I love good ol'fashoned, nerdy Tabletop Role Playing Games (or RPGs). Titles like [Palladium's Rifts®](http://www.palladiumbooks.com/), The various Star Wars RPGs, and [Jeff Siadek's Battlestations](http://gorillaboardgames.com/battlestation/) Boardgame/ RPG hybrid are some of my favorites. RPG Buddy came about from a desire to see if I could create a mobile web-app that me and my friends could use on our phones that would not only be useful, but also look nice and be intuitive and fun to use.
 
